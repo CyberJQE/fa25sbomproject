@@ -14,13 +14,13 @@ def generateSBOM ():
         "packageVersion:": input("Enter the package version of the SBOM: "),
         "packageURL:": input("Enter the package URL of the SBOM: "),
         "Relationship:": input("Enter the relationship of the SBOM: "),
+        "Timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
 }
-        if "/" not in sbomDictionary["packageURL:"]: # checks if a / is in the String. If no / is in the string a URL was not provided.
-            print("You need to add a valid package URL.")
+        if "/" not in sbomDictionary["packageURL:"] or "github" not in sbomDictionary["packageURL:"]: # checks if a / is in the String. If no / is in the string a URL was not provided.
+            print("You need to add a valid open-source package URL.")
         else:
             sbomList.append(sbomDictionary) # Add the SBOM to the list.
             print("The SBOM has been added.")
-
         inputToAdd = input("\n Do you want to generate further SBOMs? (y/n)") # Checks if the user wants to add more SBOMs.
         if inputToAdd != "y": # If the user does not enter y the loop will break and no further SBOMs will be added.
             break
@@ -69,4 +69,5 @@ def analyzeSBOMs(sbomList): #todo: method implementation in progress.
     print("The SBOM(s) consist of the following: ")
     sbomToAnalyze = json.dumps(sbomList, indent=4)
     print(sbomToAnalyze)
+
 
