@@ -1,14 +1,16 @@
 import json
-
-# The generateSBOM() method uses the dictionary data structure relying on user input to fulfill the requirements of a SBOM in SPDX format. Serialization is employed in which the file is written and opened. The dictionary is converted to json format which can be uploaded on FOSSA.
+import datetime
+# The generateSBOM() method uses the dictionary data structure relying on user input to fulfill the requirements of a SBOM in SPDX format. The dictionary is converted to json format.
 
 def generateSBOM ():
 
     sbomList = [] # An empty list.
     while True: # The contents of the dictionary will be appended to the list.
         sbomDictionary = {
+        "SPDX Version: ": "2.3",
+        "License: ": "CC0-1.0",
+        "SPDXID: ": "SPDXRef-Document",
         "createdBy:": input("Enter who created the SBOM: "),
-        "creationDate:": input("Enter the creation date of the SBOM: "),
         "suppliedBy:": input("Enter who supplied the SBOM: "),
         "name:": input("Enter the name of the SBOM: "),
         "packageVersion:": input("Enter the package version of the SBOM: "),
@@ -69,5 +71,4 @@ def analyzeSBOMs(sbomList): #todo: method implementation in progress.
     print("The SBOM(s) consist of the following: ")
     sbomToAnalyze = json.dumps(sbomList, indent=4)
     print(sbomToAnalyze)
-
 
