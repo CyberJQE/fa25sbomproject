@@ -4,10 +4,9 @@ from SBOMBuilder import loadSBOMs
 from SBOMBuilder import saveSBOMs
 from SBOMBuilder import analyzeSBOMs
 import json
-#todo: Add thorough documentation throughout the main.py and SBOMBuilder.py files.
 
 """A CLI SBOM Application that provides the following capabilities:
-    - Generate an SBOM in SPDX format (https://spdx.github.io/spdx-spec/v2.3/relationships-between-SPDX-elements/).
+    - Generate an SBOM in SPDX 2.3 format (https://spdx.github.io/spdx-spec/v2.3/relationships-between-SPDX-elements/).
     - Load an SBOM. - Loads the previously generated SBOM.
     - Save an SBOM. - Saves the generated SBOM
     - Clear an SBOM. - Clears the generated SBOM.
@@ -21,7 +20,7 @@ The generated SBOM is contained in a dictionary which is appended to a list whic
 def main():
 
     while True:
-        print("Hello User, welcome to an SBOM Builder where you can build SBOMs in SPDX format.")
+        print("Hello User, welcome to an SBOM Builder where you can build SBOMs in SPDX 2.3 format.")
         print("Please select one of the following options: \n 1. Generate an SBOM\n 2. Load a generated SBOM\n 3. Save a SBOM\n 4. Clear a SBOM\n 5. Analyze a SBOM\n 6. Exit the application.")
         userInput = input("Select an option: ")
         if userInput == "1": # Option 1 generates the SBOM and creates the SPDXsbom.json file.
@@ -51,6 +50,9 @@ def main():
         elif userInput == "6": # Option 6 closes the application.
             print("Exiting the application.")
             break
+
+
+
 
 if __name__ == "__main__":
     main()
